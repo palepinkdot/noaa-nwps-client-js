@@ -1,5 +1,7 @@
 # nwps-client
 
+> Disclaimer: This repo and package was basically 100% vibe-coded. I needed some data apart of another project and had Claude Code generate this. It works for my needs, I figured I wasn't the first one so I puiblished it. I don't want any money, nor do I believe other AI-generated projects deserve it. Instead, if this package helped you, donate to your local no-kill animal shleter.
+
 A TypeScript/JavaScript client for NOAA's [National Water Prediction Service (NWPS) API](https://api.water.noaa.gov/nwps/v1/docs/) — gauge observations and forecasts, rating curves, National Water Model streamflow, and hydrologic products.
 
 - Zero runtime dependencies — uses the native `fetch`
@@ -26,8 +28,8 @@ console.log(gauge.name, gauge.status?.observed?.primary);
 
 // List gauges in a bounding box.
 const { gauges } = await nwps.gauges.list({
-  bbox: { xmin: -124.8, ymin: 45.5, xmax: -116.9, ymax: 49.0 },
-  srid: "EPSG_4326",
+	bbox: { xmin: -124.8, ymin: 45.5, xmax: -116.9, ymax: 49.0 },
+	srid: "EPSG_4326",
 });
 
 // Get a gauge's rating curve.
@@ -39,7 +41,7 @@ const stageFlow = await nwps.gauges.getStageFlow("ANAW1");
 // Get National Water Model streamflow forecasts for a reach.
 const reach = await nwps.reaches.get("23021904");
 const streamflow = await nwps.reaches.getStreamflow("23021904", {
-  series: "short_range",
+	series: "short_range",
 });
 
 // Get a specific hydrologic product by parameter code.
@@ -53,35 +55,34 @@ const status = await nwps.health.monitor();
 
 ```ts
 const nwps = new NwpsClient({
-  // Override the API base URL (e.g. for a proxy). Defaults to
-  // "https://api.water.noaa.gov".
-  baseUrl: "https://api.water.noaa.gov",
+	// Override the API base URL (e.g. for a proxy). Defaults to
+	// "https://api.water.noaa.gov".
+	baseUrl: "https://api.water.noaa.gov",
 
-  // Extra headers sent with every request.
-  headers: { "X-Api-Key": "..." },
+	// Extra headers sent with every request.
+	headers: { "X-Api-Key": "..." },
 
-  // Abort requests that take longer than this, in milliseconds.
-  timeoutMs: 10_000,
+	// Abort requests that take longer than this, in milliseconds.
+	timeoutMs: 10_000,
 
-  // Custom `fetch` implementation, e.g. for older Node versions or tests.
-  fetch: myFetch,
+	// Custom `fetch` implementation, e.g. for older Node versions or tests.
+	fetch: myFetch,
 });
 ```
 
 ## Error handling
 
-Non-2xx responses reject with an `NwpsApiError`, which includes the HTTP
-status and the parsed error body when the API returned one:
+Non-2xx responses reject with an `NwpsApiError`, which includes the HTTP status and the parsed error body when the API returned one:
 
 ```ts
 import { NwpsApiError } from "nwps-client";
 
 try {
-  await nwps.gauges.get("not-a-real-gauge");
+	await nwps.gauges.get("not-a-real-gauge");
 } catch (error) {
-  if (error instanceof NwpsApiError) {
-    console.error(error.status, error.body?.message);
-  }
+	if (error instanceof NwpsApiError) {
+		console.error(error.status, error.body?.message);
+	}
 }
 ```
 
