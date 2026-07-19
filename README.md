@@ -4,7 +4,7 @@ A TypeScript/JavaScript client for NOAA's [National Water Prediction Service (NW
 
 - Zero runtime dependencies — uses the native `fetch`
 - Full TypeScript types for every request and response
-- Works in Node.js (18+), browsers, and other `fetch`-capable runtimes
+- Works in Node.js (20+), browsers, and other `fetch`-capable runtimes
 - Ships both ESM and CommonJS builds
 
 ## Install
@@ -87,17 +87,17 @@ try {
 
 ## API coverage
 
-| Resource   | Method                                             | Endpoint                                            |
-| ---------- | --------------------------------------------------- | ---------------------------------------------------- |
-| `gauges`   | `list(params?)`                                     | `GET /nwps/v1/gauges`                                 |
-| `gauges`   | `get(identifier)`                                   | `GET /nwps/v1/gauges/{identifier}`                    |
-| `gauges`   | `getRatings(identifier, params?)`                   | `GET /nwps/v1/gauges/{identifier}/ratings`            |
-| `gauges`   | `getStageFlow(identifier)`                          | `GET /nwps/v1/gauges/{identifier}/stageflow`          |
-| `gauges`   | `getStageFlowByProduct(identifier, product)`        | `GET /nwps/v1/gauges/{identifier}/stageflow/{product}`|
-| `reaches`  | `get(reachId)`                                      | `GET /nwps/v1/reaches/{reachId}`                      |
-| `reaches`  | `getStreamflow(reachId, params?)`                   | `GET /nwps/v1/reaches/{reachId}/streamflow`           |
-| `products` | `getStageFlow(identifier, pedts)`                   | `GET /nwps/v1/products/stageflow/{identifier}/{pedts}`|
-| `health`   | `monitor()`                                         | `GET /nwps/v1/monitor`                                |
+| Resource   | Method                                       | Endpoint                                               |
+| ---------- | -------------------------------------------- | ------------------------------------------------------ |
+| `gauges`   | `list(params?)`                              | `GET /nwps/v1/gauges`                                  |
+| `gauges`   | `get(identifier)`                            | `GET /nwps/v1/gauges/{identifier}`                     |
+| `gauges`   | `getRatings(identifier, params?)`            | `GET /nwps/v1/gauges/{identifier}/ratings`             |
+| `gauges`   | `getStageFlow(identifier)`                   | `GET /nwps/v1/gauges/{identifier}/stageflow`           |
+| `gauges`   | `getStageFlowByProduct(identifier, product)` | `GET /nwps/v1/gauges/{identifier}/stageflow/{product}` |
+| `reaches`  | `get(reachId)`                               | `GET /nwps/v1/reaches/{reachId}`                       |
+| `reaches`  | `getStreamflow(reachId, params?)`            | `GET /nwps/v1/reaches/{reachId}/streamflow`            |
+| `products` | `getStageFlow(identifier, pedts)`            | `GET /nwps/v1/products/stageflow/{identifier}/{pedts}` |
+| `health`   | `monitor()`                                  | `GET /nwps/v1/monitor`                                 |
 
 Response and parameter shapes mirror the [official API docs](https://api.water.noaa.gov/nwps/v1/docs/) field-for-field — see [`src/types.ts`](src/types.ts) for the full type definitions.
 
