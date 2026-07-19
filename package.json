@@ -17,10 +17,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/palepinkdot/noaa-nwps-js.git"
+    "url": "git+https://github.com/palepinkdot/noaa-nwps-client-js.git"
   },
-  "homepage": "https://github.com/palepinkdot/noaa-nwps-js#readme",
-  "bugs": "https://github.com/palepinkdot/noaa-nwps-js/issues",
+  "homepage": "https://github.com/palepinkdot/noaa-nwps-client-js#readme",
+  "bugs": "https://github.com/palepinkdot/noaa-nwps-client-js/issues",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
